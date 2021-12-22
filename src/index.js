@@ -1,5 +1,3 @@
-import scriptOne from './modules/one';
-import scriptTwo from './modules/two';
+import timer from './modules/timer';
 
-scriptOne();
-scriptTwo();
+timer('23 december 2021');
