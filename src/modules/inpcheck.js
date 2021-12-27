@@ -47,6 +47,24 @@ const inpCheck = () => {
         elem.addEventListener('input', event => {
             console.dir(event);
             console.log('checkPhone', checkPhone(event.target.value));
+            //event.target.value.replace(checkPhone);
+            //console.log('event.target.value.replace(checkPhone);: ', ;
+            // let phone ='';
+            // if(event.target.value.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2}$)/g) {
+            //     phone = event.target.value.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2}$)/g, ($1, $2, $3, $4, $5) => {
+            //         return (`${$1}(${$2})${$3}-${$4}-${$5}`);
+            //     });
+            // }
+            let phone = '';
+            if(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2}$)/g.test(event.target.value)) {
+                phone = event.target.value.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/g, ($1, $2, $3, $4, $5, $6) => {
+                    let newPhone = '';
+                    newPhone = `${$2}(${$3})${$4}-${$5}-${$6}`;
+                    return newPhone;
+                });
+                event.target.value = phone;
+            }
+            
             let phoneTest = checkPhone(event.target.value);
             if(phoneTest) {
                 isError = false;
