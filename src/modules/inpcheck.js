@@ -8,7 +8,6 @@ const inpCheck = () => {
     const calcItem = document.querySelectorAll('input.calc-item');
     const formMess = document.querySelector('.mess');
 
-    console.log(calcItem);
     
     let  checkName = (value) => {
         return !/([^а-я-\s]+)/gi.test(value);
@@ -29,24 +28,18 @@ const inpCheck = () => {
     inputName.forEach(elem => {
         elem.addEventListener('input', event => {
             let nameTest = checkName(event.target.value);
-            console.log('checkName', checkName(event.target.value));
             if(nameTest) {
                 isError = false;
-                console.log('event', event.target);
                 event.target.style.backgroundColor = '#fff';
             } else {
                 isError = true;
                 event.target.style.backgroundColor = '#FF7F50';
                 
             }
-            console.log('event.target.value: ', event.target.value);
-            console.log('isError', isError);
         });
     });
     inputPhone.forEach(elem => {
         elem.addEventListener('input', event => {
-            console.dir(event);
-            console.log('checkPhone', checkPhone(event.target.value));
             let phone = '';
             if(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2}$)/g.test(event.target.value)) {
                 phone = event.target.value.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/g, ($1, $2, $3, $4, $5, $6) => {
@@ -65,14 +58,10 @@ const inpCheck = () => {
                 isError = true;
                 event.target.style.backgroundColor = '#FF7F50';
             }
-            console.log('event.target.value: ', event.target.value);
-            console.log('isError', isError);
         });
     });
     inputEmail.forEach(elem => {
         elem.addEventListener('input', event => {
-            console.log(elem);
-            console.log('checkEmail', checkEmail(event.target.value));
             let emailTest = checkEmail(event.target.value);
             if(emailTest) {
                 isError = false;
@@ -81,31 +70,22 @@ const inpCheck = () => {
                 isError = true;
                 event.target.style.backgroundColor = '#FF7F50';
             }
-            console.log('event.target.value: ', event.target.value);
-            console.log('isError', isError);
         });
     });
     formMess.addEventListener('input', event => {
         let messTest = checkMess(event.target.value);
-        console.log('checkName', checkName(event.target.value));
         if(messTest) {
             isError = false;
-            console.log('event', event.target);
             event.target.style.backgroundColor = '#fff';
         } else {
             isError = true;
             event.target.style.backgroundColor = '#FF7F50';
-            
         }
-        console.log('event.target.value: ', event.target.value);
-        console.log('isError', isError);
     });
 
     formBtn.forEach(elem => {
         elem.addEventListener('click', event => {
-            console.log(event.target);
             event.preventDefault();
-            console.log('isError', isError);
             if(!isError) {
                 console.log('Отправка формы');
             }
