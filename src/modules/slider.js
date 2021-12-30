@@ -118,6 +118,7 @@ const slider = () => {
         let target = event.target;
         if(target.classList.contains('prev') || target.classList.contains('next') || target.classList.contains('dot')) {
             console.log('Старт сладер');
+            stopSlides();
             intervalSlides();
         }
     }, true);
