@@ -105,6 +105,23 @@ const slider = () => {
         }
     });
 
+    allProgects.addEventListener('mouseenter', event => {
+        event.preventDefault();
+        let target = event.target;
+        if(target.classList.contains('prev') || target.classList.contains('next') || target.classList.contains('dot')) {
+            console.log('Стоп сладер');
+            stopSlides();
+        }
+    }, true);
+    allProgects.addEventListener('mouseleave', event => {
+        event.preventDefault();
+        let target = event.target;
+        if(target.classList.contains('prev') || target.classList.contains('next') || target.classList.contains('dot')) {
+            console.log('Старт сладер');
+            intervalSlides();
+        }
+    }, true);
+
     intervalSlides();
 };
 
