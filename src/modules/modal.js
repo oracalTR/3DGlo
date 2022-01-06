@@ -1,3 +1,5 @@
+import { animate } from './helpers';
+
 const modal = () => {
     const serviceBlock = document.querySelector('.service');
     const popup = document.querySelector('.popup');
@@ -11,16 +13,27 @@ const modal = () => {
             popup.style.opacity = 0;
             popup.style.display = 'block';
             if(!(document.documentElement.clientWidth < 768)) {
-                let animatePopupRun = () => {
-                    stepAnimate += 0.03;
-                    animatePopup = requestAnimationFrame(animatePopupRun);
-                    if(stepAnimate < 1) {
-                        popup.style.opacity = stepAnimate;
-                    } else {
-                        cancelAnimationFrame(animatePopup);
+                animate({
+                    duration: 500,
+                    timing(timeFraction) {
+                      return timeFraction;
+                    },
+                    draw(progress) {
+                      popup.style.opacity = progress;
                     }
-                };
-                animatePopupRun();
+                  });
+                // Старый вариант анимации
+                // let animatePopupRun = () => {
+                //     stepAnimate += 0.03;
+                //     animatePopup = requestAnimationFrame(animatePopupRun);
+                //     if(stepAnimate < 1) {
+                //         popup.style.opacity = stepAnimate;
+                //     } else {
+                //         cancelAnimationFrame(animatePopup);
+                //     }
+                // };
+                // animatePopupRun();
+                // Конец сарого варианта анимации
             } else {
                 popup.style.opacity = 1;
             }
