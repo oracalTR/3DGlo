@@ -10,6 +10,8 @@ const calc = (price = 100) => {
 
     const animateTotalPrice = () => {
         let nullPrice = 0;
+        let timeSpeed = 0;
+        totalPrice > 5000 ? timeSpeed = 0.01 : timeSpeed = 25;
         interval = setInterval( () => {
             calcTotal.textContent = nullPrice;
             if(nullPrice >= totalPrice) {
@@ -18,7 +20,7 @@ const calc = (price = 100) => {
             } else {
                 nullPrice += 111;
             }
-        }, 5 );
+        }, timeSpeed );
     }; 
 
     const calcTotalPrice = (price) => {
@@ -50,6 +52,8 @@ const calc = (price = 100) => {
         console.log('totalPrice: ', totalPrice);
         if(totalPrice) {
             animateTotalPrice();
+        } else {
+            calcTotal.textContent = totalPrice;
         }
     };
 
