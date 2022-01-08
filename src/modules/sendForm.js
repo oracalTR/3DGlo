@@ -1,5 +1,4 @@
 const sendForm = (formId, someElem = []) => {
-    console.log('someElem', someElem);
     const divMess = document.createElement('div');
     const sendMes = 'Отправка...';
     const sendError = 'Ошибка отправки, попробуйте позже...';
@@ -40,7 +39,6 @@ const sendForm = (formId, someElem = []) => {
                     elem.value = '';
                 });
                 divMess.textContent = successMess;
-                console.log('data', data);
                 console.log('Отправка формы');
             })
             .catch(errror => {
@@ -51,11 +49,6 @@ const sendForm = (formId, someElem = []) => {
     } catch (error) {
         console.log(error, 'Что то пошло не так!');
     }
-    
-    console.log('formBody: ', formBody);
-
-    // console.log(formId);
-    console.log(someElem);
 };
 
 export default sendForm;
