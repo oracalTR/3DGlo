@@ -1,3 +1,5 @@
+import sendForm from "./sendForm";
+
 const inpCheck = () => {
     const form = document.querySelectorAll('form');
     const formBtn = document.querySelectorAll('.form-btn');
@@ -5,6 +7,7 @@ const inpCheck = () => {
     const inputName = document.querySelectorAll('input[name=user_name]');
     const inputEmail = document.querySelectorAll('input[name=user_email]');
     const inputPhone = document.querySelectorAll('input[name=user_phone]');
+    const calcType = document.querySelector('.calc-type');
     const calcItem = document.querySelectorAll('input.calc-item');
     const formMess = document.querySelector('.mess');
 
@@ -83,11 +86,14 @@ const inpCheck = () => {
         }
     });
 
-    formBtn.forEach(elem => {
-        elem.addEventListener('click', event => {
+    form.forEach(elem => {
+        elem.addEventListener('submit', event => {
             event.preventDefault();
             if(!isError) {
-                console.log('Отправка формы');
+                sendForm(event.target, [{
+                    type: 'block',
+                    id: 'total'
+                }]);
             }
         });
     });
