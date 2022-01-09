@@ -30,6 +30,16 @@ const inpCheck = () => {
 
     inputName.forEach(elem => {
         elem.addEventListener('input', event => {
+            let inputName = '';
+            if(/([^а-я-\s]+)/gi.test(event.target.value)) {
+                inputName = event.target.value.replace(/([^а-я-\s]+)/gi, ($1) => {
+                    let newName = '';
+                    newName = ``;
+                    return newName;
+                });
+                event.target.value = inputName;
+            }
+
             let nameTest = checkName(event.target.value);
             if(nameTest) {
                 isError = false;
@@ -66,7 +76,7 @@ const inpCheck = () => {
     inputEmail.forEach(elem => {
         elem.addEventListener('input', event => {
             let emailTest = checkEmail(event.target.value);
-            if(emailTest) {
+            if(emailTest || event.target.value.trim() == '') {
                 isError = false;
                 event.target.style.backgroundColor = '#fff';
             } else {

@@ -6,10 +6,12 @@ import tabs from './modules/tabs';
 import slider from './modules/slider';
 import calc from './modules/calc';
 
-timer('13 January 2022');
-menu();
-modal();
-inpCheck();
-tabs();
-slider();
-calc(100);
+document.addEventListener('DOMContentLoaded', () => {
+    timer('13 January 2022');
+    menu();
+    modal();
+    inpCheck();
+    tabs();
+    slider();
+    calc(100);
+});
