@@ -26,7 +26,10 @@ const inpCheck = () => {
     };
     let checkCalc = /\D/g;
 
-    let isError = true;
+    let isErrorName = false;
+    let isErrorPhone = false;
+    let isErrorEmail = false;
+    let isErrorMess = false;
 
     inputName.forEach(elem => {
         elem.addEventListener('input', event => {
@@ -42,10 +45,10 @@ const inpCheck = () => {
 
             let nameTest = checkName(event.target.value);
             if(nameTest) {
-                isError = false;
+                isErrorName = false;
                 event.target.style.backgroundColor = '#fff';
             } else {
-                isError = true;
+                isErrorName = true;
                 event.target.style.backgroundColor = '#FF7F50';
                 
             }
@@ -65,10 +68,10 @@ const inpCheck = () => {
             
             let phoneTest = checkPhone(event.target.value);
             if(phoneTest) {
-                isError = false;
+                isErrorPhone = false;
                 event.target.style.backgroundColor = '#fff';
             } else {
-                isError = true;
+                isErrorPhone = true;
                 event.target.style.backgroundColor = '#FF7F50';
             }
         });
@@ -77,10 +80,10 @@ const inpCheck = () => {
         elem.addEventListener('input', event => {
             let emailTest = checkEmail(event.target.value);
             if(emailTest || event.target.value.trim() == '') {
-                isError = false;
+                isErrorEmail = false;
                 event.target.style.backgroundColor = '#fff';
             } else {
-                isError = true;
+                isErrorEmail = true;
                 event.target.style.backgroundColor = '#FF7F50';
             }
         });
@@ -88,10 +91,10 @@ const inpCheck = () => {
     formMess.addEventListener('input', event => {
         let messTest = checkMess(event.target.value);
         if(messTest) {
-            isError = false;
+            isErrorMess = false;
             event.target.style.backgroundColor = '#fff';
         } else {
-            isError = true;
+            isErrorMess = true;
             event.target.style.backgroundColor = '#FF7F50';
         }
     });
@@ -99,7 +102,7 @@ const inpCheck = () => {
     form.forEach(elem => {
         elem.addEventListener('submit', event => {
             event.preventDefault();
-            if(!isError) {
+            if(!isErrorName && !isErrorPhone && !isErrorEmail && !isErrorMess) {
                 sendForm(event.target, [{
                     type: 'block',
                     id: 'total'
