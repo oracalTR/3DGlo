@@ -11,14 +11,14 @@ const calc = (price = 100) => {
     const animateTotalPrice = () => {
         let nullPrice = 0;
         let timeSpeed = 0;
-        totalPrice > 5000 ? timeSpeed = 0.01 : timeSpeed = 25;
+        totalPrice > 5000 ? timeSpeed = 0.01 : timeSpeed = 150;
         interval = setInterval( () => {
             calcTotal.textContent = nullPrice;
             if(nullPrice >= totalPrice) {
                 calcTotal.textContent = totalPrice;
                 clearInterval(interval);
             } else {
-                nullPrice += 111;
+                nullPrice += 4222;
             }
         }, timeSpeed );
     }; 

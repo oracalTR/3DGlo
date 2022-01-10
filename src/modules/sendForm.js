@@ -3,6 +3,7 @@ const sendForm = (formId, someElem = []) => {
     const sendMes = 'Отправка...';
     const sendError = 'Ошибка отправки, попробуйте позже...';
     const successMess = 'Ваше сообщение успешно отправлено! Наш менеджер скоро свяжется с Вами!';
+    const popup = document.querySelector('.popup');
     let formBody = {};
     let formData = new FormData(formId);
     
@@ -39,10 +40,19 @@ const sendForm = (formId, someElem = []) => {
                     elem.value = '';
                 });
                 divMess.textContent = successMess;
+                setTimeout(() => {
+                    formId.querySelector('.message') ? formId.removeChild(formId.querySelector('.message')) : '';
+                }, 3000);
+                setTimeout(() => {
+                    popup.style.display == 'block' ? popup.style.display = 'none' : '';
+                }, 4000);
                 console.log('Отправка формы');
             })
             .catch(errror => {
                 divMess.textContent = sendError;
+                setTimeout(() => {
+                    formId.querySelector('.message') ? formId.removeChild(formId.querySelector('.message')) : '';
+                }, 3000);
             });
         };
         send(formBody);
